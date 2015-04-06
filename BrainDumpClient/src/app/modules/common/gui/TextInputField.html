@@ -1,0 +1,19 @@
+<div class="form-group has-feedback"
+     data-ng-class="{'has-success':isValid(validationState),
+                     'has-error':isInvalid(validationState)}">
+    <label for="{{ label }}" class="control-label" data-ng-bind="label"></label>
+    <input id="{{ label }}" data-ng-model="model"
+           data-ng-disabled="isLoading || isDisabled"
+           class="form-control">
+    <span data-ng-if="!isLoading"
+          class="form-control-feedback">
+        <span data-ng-if="isValid(validationState)" class="fa fa-check"></span>
+        <span data-ng-if="isInvalid(validationState)" class="fa fa-remove"></span>
+    </span>
+    <span data-ng-if="isLoading"
+          class="form-control-feedback">
+        <span class="fa fa-spin fa-spinner"></span>
+    </span>
+    <div data-ng-transclude data-ng-if="isShowingMessage" class="help-block">
+    </div>
+</div>

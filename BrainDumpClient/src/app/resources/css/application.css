@@ -1,0 +1,63 @@
+html {
+    overflow-y: scroll;
+}
+
+body {
+    padding-top: 70px;
+    margin-bottom: 2em;
+}
+
+/**
+ * General
+ */
+.small-separator {
+    margin: 1em;
+}
+
+.page-heading {
+    border-bottom: 1px black solid;
+}
+
+/**
+ * Splash
+ */
+
+.application-description {
+
+}
+
+/**
+ * Navigation
+ */
+.navigation-active {
+    border-bottom: 1px red solid;
+}
+
+/**
+ * Project
+ */
+
+.project-organization-name {
+    margin-top: 0.5em;
+    border-bottom: 1px black solid;
+    margin-bottom: 1em;
+}
+
+.project-name {
+    margin-top: 0;
+}
+.project-list-item {
+    margin-bottom: 1em;
+}
+
+
+/**
+ * topic
+ */
+.topic-name {
+    margin-top: 0;
+}
+
+.topic-list-item {
+    margin-bottom: 1em;
+}

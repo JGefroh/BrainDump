@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 data-ng-bind="vm.topic.name"
+                class="topic-topic"></h1>
+            <h3 data-ng-bind="vm.topic.description"></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1">
+            <h5 data-ng-bind="vm.topic.views"
+                class="text-center"></h5>
+            <h5 class="text-center">Views</h5>
+        </div>
+        <div class="col-xs-1">
+            <h5 data-ng-bind="vm.topic.solutions.length"
+                class="text-center"></h5>
+            <h5 class="text-center">Solutions</h5>
+        </div>
+        <div class="col-xs-1">
+            <h5 data-ng-bind="vm.topic.kudos.length"
+                class="text-center"></h5>
+            <h5 class="text-center">Kudos</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-9">
+            <span data-ng-repeat="tag in vm.topic.tags">
+                <span data-ng-bind="tag.name"
+                      class="badge"></span>
+            </span>
+        </div>
+    </div>
+    <hr class="small-separator">
+
+    <h3>Solutions</h3>
+    <div data-ng-repeat="solution in vm.topic.solutions">
+        <div class="row">
+            <div class="col-xs-1">
+                <img src="holder.js/64x64"
+                     class="img-responsive img-circle"
+                     holder-fix>
+            </div>
+            <div class="col-xs-10">
+                <span data-ng-bind="solution.author.username"></span><br/>
+                <span data-ng-bind="solution.text"></span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

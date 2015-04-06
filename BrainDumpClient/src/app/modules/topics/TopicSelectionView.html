@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Topics</h1>
+    <div data-ng-repeat="topic in vm.topics">
+        <div class="topic-list-item">
+            <div class="row">
+                <div class="col-xs-1">
+                    <img src="holder.js/64x64"
+                         class="img-responsive img-circle"
+                         holder-fix>
+                </div>
+                <div class="col-xs-8">
+                    <a data-ui-sref="topics.examine({topicId:topic.id})">
+                        <h3 data-ng-bind="topic.name"
+                            class="topic-name"></h3>
+                    </a>
+                    <h5 data-ng-bind="topic.description"></h5>
+                </div>
+                <div class="col-xs-1">
+                    <h5 data-ng-bind="topic.views"
+                        class="text-center"></h5>
+                    <h5 class="text-center">views</h5>
+                </div>
+                <div class="col-xs-1">
+                    <h5 data-ng-bind="topic.solutions.length"
+                        class="text-center"></h5>
+                    <h5 class="text-center">Solutions</h5>
+                </div>
+                <div class="col-xs-1">
+                        <h5 data-ng-bind="topic.kudos.length"
+                            class="text-center"></h5>
+                    <h5 class="text-center">Kudos</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-1 col-xs-9">
+                    <span data-ng-repeat="tag in topic.tags">
+                        <span data-ng-bind="tag.name"
+                              class="badge"></span>
+                    </span>
+                </div>
+            </div>
+            <hr class="small-separator">
+        </div>
+    </div>
+</div>

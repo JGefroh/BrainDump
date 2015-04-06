@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name":"Resolve XGY - Not Found Error",
+    "description": "Step by step solution.",
+    "type": "question",
+    "kudos": [
+      {}, {}, {}, {}
+    ],
+    "views": 23,
+    "solutions": [
+      {
+        "id":1,
+        "text": "This is how you do it.",
+        "type":"solution"
+      },
+      {
+        "id":2,
+        "text": "This is how you do it.",
+        "type":"solution"
+      },
+      {
+        "id":3,
+        "text": "This is how you do it.",
+        "type":"solution"
+      }
+    ],
+    "tags": [
+      {"name": "Websphere"},
+      {"name": "Java"}
+    ]
+  },
+  {
+    "id": 2,
+    "name":"How long does it take to upload the RJG module?",
+    "description": "I'm having difficulty doing this.",
+    "kudos": [
+      {}, {}, {}, {}
+    ],
+    "views": 0,
+    "solutions": []
+  }
+]
