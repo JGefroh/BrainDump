@@ -8,6 +8,21 @@
             },
             saveOrganization: function() {
                 return this.base;
+            },
+            getMembershipsForOrganization: function(organizationId) {
+                return this.base + '/{organizationId}/memberships'
+                        .replace('{organizationId}', organizationId)
+            },
+            addMemberAs: function(userId, organizationId, role) {
+                return this.base + '/{organizationId}/memberships?userId={userId}&role={role}'
+                        .replace('{organizationId}', organizationId)
+                        .replace('{userId}', userId)
+                        .replace('{role}', role);
+            },
+            removeMembership: function(userToRemoveId, organizationId) {
+                return this.base + '/{organizationId}/memberships?userId={userToRemoveId}'
+                        .replace('{organizationId}', organizationId)
+                        .replace('{userId}', userToRemoveId);
             }
         };
 
@@ -22,7 +37,25 @@
             return $http.put(endpoints.saveOrganization(), organization).then(function(response) {
                 return response.data;
             });
-        }
+        };
+
+        self.getMembershipsForOrganization = function(organizationId) {
+            return $http.get(endpoints.getMembershipsForOrganization(organizationId)).then(function(response) {
+                return response.data;
+            });
+        };
+
+        self.addMemberAs = function(userId, organizationId, role) {
+            return $http.put(endpoints.addMemberAs(userId, organizationId, role)).then(function(response) {
+                return response.data;
+            });
+        };
+
+        self.removeMembership = function(userToRemoveId, organizationId) {
+            return $http.put(endpoints.removeMembership(userToRemoveId, organizationId)).then(function(response) {
+                return response.data;
+            });
+        };
     }
     angular
         .module('BrainDump.OrganizationModule')

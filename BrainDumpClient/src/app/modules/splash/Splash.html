@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-offset-4 col-md-4">
                         <div class="input-group-lg">
-                            <input data-ng-model="vm.input.uuid"
+                            <input data-ng-model="input.uuid"
                                    class="form-control">
                         </div>
                     </div>
@@ -16,9 +16,12 @@
                 <br/>
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <button class="btn btn-success btn-lg inline-button"
-                                data-ng-click="authenticate(vm.input.uuid)"
+                        <button data-ng-disabled="operations.authenticate.status === 'LOADING'"
+                                data-ng-click="authenticate(input.uuid)"
+                                class="btn btn-success btn-lg inline-button"
                                 title="Get started using the ID above.">
+                            <span data-ng-if="operations.authenticate.status === 'LOADING'"
+                                  class="fa fa-spin fa-spinner"></span>
                             Get Started
                         </button>
                     </div>

@@ -14,7 +14,11 @@ import com.jgefroh.braindump.server.core.BrainDumpGenericDAO;
 public class TopicDAO extends BrainDumpGenericDAO {
 
     public List<Topic> getTopicsForOrganization(final int organizationId) {
-        TypedQuery<Topic> query = getEntityManager().createQuery("select T from Topic T where T.organizationId = :organizationId", Topic.class);
+        StringBuilder sql = new StringBuilder();
+        sql.append("select T from Topic T");
+        sql.append(" where T.organization.id = :organizationId");
+        
+        TypedQuery<Topic> query = getEntityManager().createQuery(sql.toString(), Topic.class);
         query.setParameter("organizationId", organizationId);
         
         return query.getResultList();

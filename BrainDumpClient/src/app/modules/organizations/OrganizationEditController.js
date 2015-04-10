@@ -1,20 +1,19 @@
 (function() {
     function Controller($scope, $modalInstance, OrganizationService) {
         function initialize(){
-            $scope.vm = {
-                operations: {
-                    saveOrganization: {}
-                }
-            }
+            $scope.operations = {
+                saveOrganization: {}
+            };
         }
 
         $scope.save = function(organization) {
-            $scope.vm.operations.saveOrganization.status = 'LOADING';
+            $scope.operations.saveOrganization.status = 'LOADING';
+            console.info(organization);
             OrganizationService.saveOrganization(organization).then(function(savedOrganization) {
                 $modalInstance.close(savedOrganization);
             })
             .finally(function() {
-                $scope.vm.operations.saveOrganization.status = null;
+                $scope.operations.saveOrganization.status = null;
             })
         };
 

@@ -8,13 +8,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" ui-sref="splash({uuid:user.uuid})">{{ applicationName }} <span class="small">{{ versionNumber }}</span></a>
+            <a class="navbar-brand" ui-sref="splash">{{ applicationName }} <span class="small">{{ versionNumber }}</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
-                <li ui-sref-active="navigation-active"><a ui-sref="splash({uuid:user.uuid})"><span class="fa fa-home"></span> Home</a></li>
+                <li ui-sref-active="navigation-active"><a ui-sref="splash"><span class="fa fa-home"></span> Home</a></li>
+                <li ui-sref-active="navigation-active"><a ui-sref="organizations.selection"><span class="fa fa-group"></span> Organizations</a></li>
+                <li ui-sref-active="navigation-active"><a ui-sref="user.settings"><span class="fa fa-gear"></span> User Settings</a></li>
             </ul>
             <p class="navbar-text pull-right">
                 Created by <a href="http://www.jgefroh.com" class="navbar-link">Joseph Gefroh</a>

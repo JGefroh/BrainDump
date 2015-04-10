@@ -1,32 +1,41 @@
 <div class="container">
-    <h1>Topics</h1>
-    <div data-ng-repeat="topic in vm.topics">
+    <div id="topic-page-heading"
+         class="row">
+        <div class="col-xs-12">
+            <h2 class="page-heading">
+                Topics
+                <button data-ng-click="createTopic()"
+                        class="btn btn-link">
+                    <span class="fa fa-plus"></span>
+                    Create Topic
+                </button>
+            </h2>
+        </div>
+    </div>
+    <div data-ng-repeat="topic in topics">
         <div class="topic-list-item">
             <div class="row">
-                <div class="col-xs-1">
-                    <img src="holder.js/64x64"
-                         class="img-responsive img-circle"
-                         holder-fix>
-                </div>
-                <div class="col-xs-8">
+                <div class="col-xs-9">
                     <a data-ui-sref="topics.examine({topicId:topic.id})">
                         <h3 data-ng-bind="topic.name"
                             class="topic-name"></h3>
                     </a>
                     <h5 data-ng-bind="topic.description"></h5>
+                    <span data-ng-bind="topic.creator.username"
+                          class="small"></span>
                 </div>
                 <div class="col-xs-1">
-                    <h5 data-ng-bind="topic.views"
+                    <h5 data-ng-bind="topic.viewCount"
                         class="text-center"></h5>
-                    <h5 class="text-center">views</h5>
+                    <h5 class="text-center">Views</h5>
                 </div>
                 <div class="col-xs-1">
-                    <h5 data-ng-bind="topic.solutions.length"
+                    <h5 data-ng-bind="topic.solutionCount"
                         class="text-center"></h5>
                     <h5 class="text-center">Solutions</h5>
                 </div>
                 <div class="col-xs-1">
-                        <h5 data-ng-bind="topic.kudos.length"
+                        <h5 data-ng-bind="topic.kudoCount"
                             class="text-center"></h5>
                     <h5 class="text-center">Kudos</h5>
                 </div>
@@ -41,5 +50,19 @@
             </div>
             <hr class="small-separator">
         </div>
+    </div>
+
+    <!-- Messages -->
+    <div id="no-topics"
+         data-ng-if="operations.loadTopics.status !== 'LOADING' && topics.length === 0">
+        <h3>This organization has no topics.</h3>
+    </div>
+
+    <div id="loading-topics"
+         data-ng-if="operations.loadTopics.status === 'LOADING'">
+        <h3 class="text-center">
+            <span class="fa fa-spin fa-spinner"></span>
+            Loading Topics...
+        </h3>
     </div>
 </div>

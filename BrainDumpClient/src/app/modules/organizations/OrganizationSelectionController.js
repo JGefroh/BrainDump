@@ -1,10 +1,8 @@
 (function() {
     function Controller($scope, $modal, OrganizationService, UserService) {
         function initialize() {
-            $scope.vm = {
-                operations: {
-                    loadOrganizations: {}
-                }
+            $scope.operations = {
+                loadOrganizations: {}
             };
             UserService.heartbeat().then(function() {
                 $scope.loadOrganizations();
@@ -22,17 +20,35 @@
                 }
             );
             modal.result.then(function(organization) {
-                $scope.vm.organizations.push(organization);
+                $scope.organizations.push(organization);
+            });
+        };
+
+        $scope.changeMembership = function(organization) {
+            var modal = $modal.open(
+                {
+                    templateUrl: 'OrganizationMembershipEditPopup.html',
+                    controller: 'OrganizationMembershipEditController',
+                    size: 'lg',
+                    resolve: {
+                        organization: function() {
+                            return organization;
+                        }
+                    }
+                }
+            );
+            modal.result.then(function(organization) {
+                $scope.organizations.push(organization);
             });
         };
 
         $scope.loadOrganizations = function() {
-            $scope.vm.operations.loadOrganizations.status = 'LOADING';
+            $scope.operations.loadOrganizations.status = 'LOADING';
             OrganizationService.getOrganizations().then(function(organizations) {
-                $scope.vm.organizations = organizations;
+                $scope.organizations = organizations;
             })
             .finally(function() {
-                $scope.vm.operations.loadOrganizations.status = null;
+                $scope.operations.loadOrganizations.status = null;
             });
         };
 

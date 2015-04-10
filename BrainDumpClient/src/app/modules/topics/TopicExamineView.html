@@ -1,51 +1,114 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h1 data-ng-bind="vm.topic.name"
-                class="topic-topic"></h1>
-            <h3 data-ng-bind="vm.topic.description"></h3>
+    <div id="topic-form"
+         data-ng-if="operations.loadTopic.status !== 'LOADING'">
+        <div id="topic-actions">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button data-ng-click="editTopic(topic)"
+                            class="btn btn-default
+                                   pull-right">
+                        <span class="fa fa-edit"></span>
+                        Edit
+                    </button>
+                    <button data-ng-click="deleteTopic(topic)"
+                            class="btn btn-default
+                                   pull-right">
+                        <span class="fa fa-remove"></span>
+                        Delete
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1">
-            <h5 data-ng-bind="vm.topic.views"
-                class="text-center"></h5>
-            <h5 class="text-center">Views</h5>
-        </div>
-        <div class="col-xs-1">
-            <h5 data-ng-bind="vm.topic.solutions.length"
-                class="text-center"></h5>
-            <h5 class="text-center">Solutions</h5>
-        </div>
-        <div class="col-xs-1">
-            <h5 data-ng-bind="vm.topic.kudos.length"
-                class="text-center"></h5>
-            <h5 class="text-center">Kudos</h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-9">
-            <span data-ng-repeat="tag in vm.topic.tags">
-                <span data-ng-bind="tag.name"
-                      class="badge"></span>
-            </span>
-        </div>
-    </div>
-    <hr class="small-separator">
-
-    <h3>Solutions</h3>
-    <div data-ng-repeat="solution in vm.topic.solutions">
-        <div class="row">
+        <div id="topic-description"
+             class="row">
+            <div class="col-xs-9">
+                <h1 data-ng-bind="topic.name"
+                    class="topic-topic"></h1>
+                <h3 data-ng-bind="topic.description"></h3>
+            </div>
             <div class="col-xs-1">
-                <img src="holder.js/64x64"
-                     class="img-responsive img-circle"
-                     holder-fix>
+                <h5 data-ng-bind="topic.viewCount"
+                    class="text-center"></h5>
+                <h5 class="text-center">Views</h5>
             </div>
-            <div class="col-xs-10">
-                <span data-ng-bind="solution.author.username"></span><br/>
-                <span data-ng-bind="solution.text"></span>
+            <div class="col-xs-1">
+                <h5 data-ng-bind="topic.solutions.length"
+                    class="text-center"></h5>
+                <h5 class="text-center">Solutions</h5>
+            </div>
+            <div class="col-xs-1">
+                <h5 data-ng-bind="topic.kudoCount"
+                    class="text-center"></h5>
+                <h5 class="text-center">Kudos</h5>
             </div>
         </div>
-        <hr>
+        <div id="topic-tags"
+             class="row">
+            <div class="col-xs-9">
+                <span data-ng-repeat="tag in topic.tags">
+                    <span data-ng-bind="tag.name"
+                          class="badge"></span>
+                </span>
+            </div>
+        </div>
+        <hr class="small-separator">
+
+        <div id="topic-solutions">
+            <h3 class="page-heading">
+                Solutions
+                <button data-ng-if="!form.addingSolution"
+                        data-ng-click="form.addingSolution = true"
+                        class="btn btn-link">
+                    <span class="fa fa-plus"></span>
+                    Add Solution
+                </button>
+            </h3>
+
+            <div id="topic-solution-input"
+                 data-ng-if="form.addingSolution">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Solution</label>
+                        <textarea data-ng-model="form.input.solutionText"
+                                  class="form-control"></textarea>
+                    </div>
+                    <div class="col-xs-12">
+                        <button data-ng-click="form.addingSolution = false"
+                                class="btn btn-link">
+                            Cancel
+                        </button>
+                        <button data-ng-disabled="operations.addSolution.status === 'LOADING'"
+                                data-ng-click="addSolution(form.input.solutionText)"
+                                class="btn btn-success
+                                       pull-right">
+                            <span data-ng-if="operations.addSolution.status !== 'LOADING'"
+                                  class="fa fa-check"></span>
+                            <span data-ng-if="operations.addSolution.status === 'LOADING'"
+                                  class="fa fa-spin fa-spinner"></span>
+                            Submit
+                        </button>
+                    </div>
+
+                    <hr>
+                </div>
+            </div>
+
+            <div data-ng-if="topic.solutions.length === 0">
+                <h3>There aren't any solutions yet. Be the first to add one!</h3>
+            </div>
+            <div data-ng-repeat="solution in topic.solutions">
+                <div data-topic-solution
+                     data-solution="solution"></div>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-topic"
+         data-ng-if="operations.loadTopic.status === 'LOADING'">
+        <h3 class="text-center">
+            <span class="fa fa-spin fa-spinner"></span>
+            Loading Topic...
+        </h3>
     </div>
 </div>

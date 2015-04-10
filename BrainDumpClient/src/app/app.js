@@ -18,4 +18,4 @@ angular
 angular
     .module('BrainDump')
     .constant('applicationName', 'BrainDump')
-    .constant('versionNumber', 'v0.0.0');
+    .constant('versionNumber', 'v0.0.1');

@@ -1,7 +1,7 @@
 {
   "id": 1,
   "name":"Resolve XGY - Not Found Error",
-  "description": "Step by step solution.",
+  "description": "I'm having an issue with this. The code states that 'There will be no other exceptions available', but every time I throw a new exception, it creates a new exception. What am I doing wrong?",
   "type": "question",
   "kudos": [
     {}, {}, {}, {}
@@ -12,13 +12,14 @@
       "id":1,
       "text": "This is how you do it.",
       "type":"solution",
+      "kudoCount": 9,
       "author": {
         "username": "JGefroh"
       }
     },
     {
       "id":2,
-      "text": "This is how you do it.",
+      "text": "This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.This is how you do it.",
       "type":"solution",
       "author": {
         "username": "JGefroh"

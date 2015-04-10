@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="row">
+    <div id="organization-page-heading"
+         class="row">
         <div class="col-xs-12">
             <h2 class="page-heading">
                 Organizations
                 <button data-ng-click="createOrganization()"
-                        class="btn btn-link
-                               pull-right">
+                        class="btn btn-link">
                     <span class="fa fa-plus"></span>
                     Create Organization
                 </button>
@@ -13,25 +13,29 @@
         </div>
     </div>
     <div id="user-organizations"
-         data-ng-repeat="organization in vm.organizations">
+         data-ng-repeat="organization in organizations">
         <div class="row">
             <div class="col-xs-12">
                 <a data-ui-sref="topics.selection({organizationId:organization.id})">
                     <h2 data-ng-bind="organization.name"
                         class="organization-organization-name"></h2>
                 </a>
+                <button data-ng-click="changeMembership(organization)"
+                        class="btn btn-success pull-right">
+                    <span class="fa fa-gear"></span> Edit Membership
+                </button>
             </div>
         </div>
     </div>
 
     <!-- Messages -->
     <div id="no-organizations"
-         data-ng-if="vm.operations.loadOrganizations.status !== 'LOADING' && vm.organizations.length === 0">
+         data-ng-if="operations.loadOrganizations.status !== 'LOADING' && organizations.length === 0">
         <h3>You are not a member of any organizations.</h3>
     </div>
 
     <div id="loading-organizations"
-         data-ng-if="vm.operations.loadOrganizations.status === 'LOADING'">
+         data-ng-if="operations.loadOrganizations.status === 'LOADING'">
         <h3 class="text-center">
             <span class="fa fa-spin fa-spinner"></span>
             Loading Organizations...

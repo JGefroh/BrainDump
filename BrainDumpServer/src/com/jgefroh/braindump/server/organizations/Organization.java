@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.jgefroh.braindump.server.security.Permission;
 import com.jgefroh.braindump.server.security.Role;
-import com.jgefroh.braindump.server.security.User;
+import com.jgefroh.braindump.server.security.users.User;
 
 @Entity
 public class Organization {
@@ -49,7 +49,13 @@ public class Organization {
     public void updateName(final String name) {
         setName(name);
     }
-    
+
+
+    public void addMembership(Membership membership) {
+        if (!getMemberships().contains(membership)) {
+            getMemberships().add(membership);
+        }
+    }
     
     public Integer getId() {
         return id;
@@ -63,7 +69,7 @@ public class Organization {
     }
     
     public List<Membership> getMemberships() {
-        if (memberships == null ) {
+        if (this.memberships == null ) {
             this.memberships = new ArrayList<Membership>();
         }
         return memberships;

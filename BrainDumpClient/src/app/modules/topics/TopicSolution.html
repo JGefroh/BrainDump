@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-xs-3 col-md-2">
+        <img src="holder.js/64x64"
+             class="img-responsive img-circle avatar"
+             holder-fix>
+        <div class="text-center">
+            <span data-ng-bind="solution.creator.username"></span>
+        </div>
+
+        <hr>
+
+        <button data-ng-if="!solution.kudoUsed"
+                data-ng-disabled="operations.isLoading()"
+                data-ng-click="addKudo(solution)"
+                class="btn btn-block btn-xs btn-default">
+            <span data-ng-if="operations.kudoSolution.status !== 'LOADING'"
+                  class="fa fa-star"></span>
+            <span data-ng-if="operations.kudoSolution.status === 'LOADING'"
+                  class="fa fa-spin fa-spinner"></span>
+            Kudo
+            <span data-ng-bind="'(' + solution.kudoCount + ')'"></span>
+        </button>
+        <button data-ng-if="solution.kudoUsed"
+                data-ng-disabled="operations.isLoading()"
+                data-ng-click="removeKudo(solution)"
+                class="btn btn-block btn-xs btn-default">
+            <span data-ng-if="operations.unkudoSolution.status !== 'LOADING'"
+                  class="fa fa-star-o"></span>
+            <span data-ng-if="operations.unkudoSolution.status === 'LOADING'"
+                  class="fa fa-spin fa-spinner"></span>
+            Un-Kudo
+            <span data-ng-bind="'(' + solution.kudoCount + ')'"></span>
+        </button>
+        <button data-ng-if="solution.editable"
+                data-ng-disabled="operations.isLoading()"
+                data-ng-click="editSolution(solution)"
+                class="btn btn-block btn-xs btn-default">
+            <span class="fa fa-edit"></span>
+            Edit
+        </button>
+        <button data-ng-if="solution.editable"
+                data-ng-disabled="operations.isLoading()"
+                data-ng-click="deleteSolution(solution)"
+                class="btn btn-block btn-xs btn-default">
+            <span class="fa fa-remove"></span>
+            Delete
+        </button>
+    </div>
+    <div class="col-xs-9 col-md-10">
+        <span data-ng-bind="solution.text"></span>
+    </div>
+</div>

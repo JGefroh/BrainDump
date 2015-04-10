@@ -25,4 +25,18 @@ public class OrganizationDAO extends BrainDumpGenericDAO {
         
         return query.getResultList();
     }
+
+    public Membership getMembershipFor(int userId, int organizationId) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("select M from Membership M, Organization O");
+        sql.append(" where M.user.id = :userId");
+        sql.append(" and M member of O.memberships");
+        sql.append(" and O.id = :organizationId");
+ 
+        TypedQuery<Membership> query = getEntityManager().createQuery(sql.toString(), Membership.class);
+        query.setParameter("organizationId", organizationId);
+        query.setParameter("userId", userId);
+        
+        return query.getResultList().isEmpty() ? null : query.getResultList().get(0);
+    }
 }

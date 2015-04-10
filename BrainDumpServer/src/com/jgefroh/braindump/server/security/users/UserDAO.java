@@ -1,4 +1,4 @@
-package com.jgefroh.braindump.server.security;
+package com.jgefroh.braindump.server.security.users;
 
 import java.util.List;
 

@@ -1,0 +1,42 @@
+<div class="container">
+    <div id="user-settings-page-heading"
+         class="row">
+        <div class="col-xs-12">
+            <h2 class="page-heading">
+                User Settings
+            </h2>
+        </div>
+    </div>
+    <div data-ng-if="operations.loadUser.status !== 'LOADING'"
+         id="user-settings">
+        <div class="row">
+            <div class="col-xs-12">
+                <label>Public User ID (You can share this with others)</label><br/>
+                <span data-ng-bind="form.user.id"></span>
+                <div data-text-input-field
+                     data-label="Username"
+                     data-model="form.user.username"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button data-ng-disabled="operations.saveSettings.status === 'LOADING'"
+                        data-ng-click="save(form.user)"
+                        class="btn btn-success">
+                <span data-ng-if="operations.saveSettings.status !== 'LOADING'"
+                      class="fa fa-save"></span>
+                <span data-ng-if="operations.saveSettings.status === 'LOADING'"
+                      class="fa fa-spin fa-spinner"></span>
+                    Save Settings
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="loading-user"
+         data-ng-if="operations.loadUser.status === 'LOADING'">
+        <h3 class="text-center">
+            <span class="fa fa-spin fa-spinner"></span>
+            Loading User..
+        </h3>
+    </div>
+</div>

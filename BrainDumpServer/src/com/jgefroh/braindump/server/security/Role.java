@@ -11,19 +11,24 @@ public class Role {
     public static List<Permission> getPermissionsForOrganizationOwner() {
         return Arrays.asList(Permission.ADMINISTRATE_ORGANIZATION, 
                                 Permission.EDIT_OWN_TOPIC, 
-                                Permission.EDIT_OTHER_TOPIC,
+                                Permission.MODERATE_TOPICS,
+                                Permission.MODERATE_SOLUTIONS,
+                                Permission.EDIT_OWN_SOLUTION,
                                 Permission.VIEW_TOPICS);
     }
 
     public static List<Permission> getPermissionsForOrganizationAdmin() {
         return Arrays.asList(Permission.ADMINISTRATE_ORGANIZATION, 
                                 Permission.EDIT_OWN_TOPIC, 
-                                Permission.EDIT_OTHER_TOPIC,
+                                Permission.MODERATE_TOPICS,
+                                Permission.MODERATE_SOLUTIONS,
+                                Permission.EDIT_OWN_SOLUTION,
                                 Permission.VIEW_TOPICS);
     }
     
-    public static List<Permission> getOrganizationMemberRole() {
+    public static List<Permission> getPermissionsForOrganizationMember() {
         return Arrays.asList(Permission.EDIT_OWN_TOPIC, 
-                             Permission.VIEW_TOPICS);
+                             Permission.VIEW_TOPICS,
+                             Permission.EDIT_OWN_SOLUTION);
     }
 }

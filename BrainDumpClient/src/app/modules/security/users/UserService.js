@@ -44,6 +44,6 @@
         };
     }
     angular
-        .module('BrainDump.SecurityModule', [])
+        .module('BrainDump.SecurityModule')
         .service('UserService', ['$q', '$http', '$stateParams', UserService]);
 })();

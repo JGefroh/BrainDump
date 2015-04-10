@@ -6,7 +6,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response.Status;
 
-import com.jgefroh.braindump.server.security.User;
+import com.jgefroh.braindump.server.security.users.User;
 
 
 public abstract class SecureEndpoint {

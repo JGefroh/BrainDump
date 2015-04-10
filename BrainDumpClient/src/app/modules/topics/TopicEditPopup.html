@@ -1,7 +1,8 @@
 <div class="modal-header">
     <div class="row">
         <div class="col-xs-12">
-            <h3 class="modal-title">Create Organization</h3>
+            <h3 data-ng-if="form.isCreating" class="modal-title">Create Topic</h3>
+            <h3 data-ng-if="!form.isCreating" class="modal-title">Edit Topic</h3>
         </div>
     </div>
 </div>
@@ -10,7 +11,7 @@
         <div class="col-xs-12">
             <div data-text-input-field
                  data-label="Name"
-                 data-model="form.organization.name"></div>
+                 data-model="form.topic.name"></div>
         </div>
     </div>
 </div>
@@ -22,14 +23,15 @@
                    pull-left">
                 Cancel
             </button>
-            <button data-ng-disabled="operations.saveOrganization.status === 'LOADING'"
-                    data-ng-click="save(form.organization)"
+            <button data-ng-disabled="operations.saveTopic.status === 'LOADING'"
+                    data-ng-click="save(form.topic)"
                     class="btn btn-success">
-                <span data-ng-if="operations.saveOrganization.status !== 'LOADING'"
+                <span data-ng-if="operations.saveTopic.status !== 'LOADING'"
                       class="fa fa-save"></span>
-                <span data-ng-if="operations.saveOrganization.status === 'LOADING'"
+                <span data-ng-if="operations.saveTopic.status === 'LOADING'"
                       class="fa fa-spin fa-spinner"></span>
-                Create Organization
+                <span data-ng-if="form.isCreating">Create Topic</span>
+                <span data-ng-if="!form.isCreating">Save Changes</span>
             </button>
         </div>
     </div>

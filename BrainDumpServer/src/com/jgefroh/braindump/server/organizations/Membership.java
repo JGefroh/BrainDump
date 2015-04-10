@@ -1,7 +1,6 @@
 package com.jgefroh.braindump.server.organizations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -14,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.jgefroh.braindump.server.security.Permission;
-import com.jgefroh.braindump.server.security.User;
+import com.jgefroh.braindump.server.security.users.User;
 
 @Entity
 public class Membership {
@@ -38,11 +37,14 @@ public class Membership {
         return membership;
     }
     
-    
+
+    public void updatePermissions(final List<Permission> permissions) {
+        setPermissions(permissions);
+    }
     
     public boolean hasPermission(final Permission permission) {
         for (Permission membershipPermission : getPermissions()) {
-            if (membershipPermission.equals(membershipPermission)) {
+            if (membershipPermission.equals(permission)) {
                 return true;
             }
         }
@@ -54,6 +56,11 @@ public class Membership {
             return true;
         }
         return false;
+    }
+    
+    public void loadFull() {
+        getPermissions();
+        getUser();
     }
 
     

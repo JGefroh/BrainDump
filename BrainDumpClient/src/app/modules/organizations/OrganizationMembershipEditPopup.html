@@ -1,0 +1,81 @@
+<div class="modal-header">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="modal-title">Administrate Organization</h3>
+        </div>
+    </div>
+</div>
+<div class="modal-body">
+    <div id="administrate-organization-form"
+         data-ng-if="!operations.isInitializing()"
+         class="row">
+        <div class="col-xs-4">
+            <div data-text-input-field
+                 data-label="User ID to Add"
+                 data-model="form.userToAddId"></div>
+        </div>
+        <div class="col-xs-4">
+            <label>Role</label><br/>
+            <select data-ng-model="form.roleToAdd"
+                    data-ng-options="role as role for role in roles"
+                    class="form-control"></select>
+        </div>
+        <div class="col-xs-4">
+            <label>&nbsp;</label><br/>
+            <button data-ng-click="addMemberAs(form.userToAddId, form.roleToAdd)"
+                    data-ng-disabled="operations.addMember.status === 'LOADING'"
+                    class="btn btn-success">
+                <span data-ng-if="operations.addMember.status !== 'LOADING'"
+                      class="fa fa-plus"></span>
+                <span data-ng-if="operations.addMember.status === 'LOADING'"
+                      class="fa fa-spin fa-spinner"></span>
+                Add Member
+            </button>
+        </div>
+
+        <div id="administrate-organization-membership-table"
+             class="col-xs-12">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Action</th>
+                    <th class="col-xs-4">Member</th>
+                    <th class="col-xs-8">Role</th>
+                </tr>
+                <tr data-ng-repeat="membership in organization.memberships">
+                    <td>
+                        <button data-ng-disabled="operations.removeMembership[membership.id].status === 'LOADING'"
+                                data-ng-click="removeMembership(membership)"
+                                class="btn btn-xs btn-default">
+                            <span data-ng-if="!operations.removeMembership[membership.id].status"
+                                  class="fa fa-remove"></span>
+                            <span data-ng-if="operations.removeMembership[membership.id].status === 'LOADING"
+                                  class="fa fa-spin fa-spinner"></span>
+                            Remove
+                        </button>
+                    </td>
+                    <td data-ng-bind="membership.user.username"></td>
+                    <td>
+                    <span data-ng-repeat="permission in membership.permissions">
+                        <span data-ng-bind="permission"></span><br/>
+                    </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div data-ng-if="operations.isInitializing()"
+         class="text-center">
+        <h3><span class="fa fa-spin fa-spinner"></span> Loading... </h3>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-xs-12">
+            <button data-ng-disabled="operations.addMember.status === 'LOADING'"
+                    data-ng-click="cancel()"
+                    class="btn btn-link">
+                Done
+            </button>
+        </div>
+    </div>
+</div>
