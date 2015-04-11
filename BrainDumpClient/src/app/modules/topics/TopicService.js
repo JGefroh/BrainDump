@@ -54,7 +54,7 @@
         };
 
         self.deleteTopic = function(topicId) {
-            return $http.delete(endpoints.deleteTopic(topicId)).then(function() {
+            return $http.delete(endpoints.deleteTopic(topicId)).then(function(response) {
                 return response.data;
             });
         };
@@ -87,7 +87,7 @@
         };
 
         self.deleteSolution = function(solutionId) {
-            return $http.delete(endpoints.deleteSolution(solutionId)).then(function() {
+            return $http.delete(endpoints.deleteSolution(solutionId)).then(function(response) {
                 return response.data;
             });
         };
