@@ -99,7 +99,8 @@ public class TopicEndpoint extends SecureEndpoint {
     @DELETE
     @Path("/solutions/{solutionId}")
     public void deleteSolution(@PathParam("solutionId") final Integer id) {
-        topicManager.deleteSolution(id);
+        User currentUser = getCurrentUser();
+        topicManager.deleteSolution(currentUser, id);
     }
 
 }
