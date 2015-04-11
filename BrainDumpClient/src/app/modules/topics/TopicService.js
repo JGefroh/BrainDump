@@ -44,10 +44,6 @@
         self.getTopic = function(topicId) {
             return $http.get(endpoints.getTopic(topicId)).then(function(response) {
                 return response.data;
-            }, function() {
-                return $http.get('test_data/topic.json').then(function(response) {
-                    return response.data;
-                });
             });
         };
 
@@ -66,8 +62,8 @@
 
         // Solutions
 
-        self.addSolution = function(topicId, solutionText) {
-            return $http.put(endpoints.addSolution(topicId), solutionText).then(function(response) {
+        self.addSolution = function(topicId, solution) {
+            return $http.put(endpoints.addSolution(topicId), solution).then(function(response) {
                 return response.data;
             });
         };

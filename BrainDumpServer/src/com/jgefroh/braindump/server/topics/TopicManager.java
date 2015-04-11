@@ -121,11 +121,11 @@ public class TopicManager {
     }
     
 
-    public Solution addSolution(final User user, final int topicId, final String solutionText) {
+    public Solution addSolution(final User user, final int topicId, final SolutionDTO solution) {
         Topic topic = authorizeAddSolution(user, topicId);
-        Solution solution = topic.addSolution(user, solutionText);
-        populateSolutionMetadata(user, topic, solution);
-        return solution;
+        Solution savedSolution = topic.addSolution(user, solution.getText());
+        populateSolutionMetadata(user, topic, savedSolution);
+        return savedSolution;
     }
     
     private Topic authorizeAddSolution(final User user, final int topicId) {

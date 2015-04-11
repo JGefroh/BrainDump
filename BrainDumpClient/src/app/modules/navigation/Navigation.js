@@ -1,12 +1,12 @@
 (function() {
     function Directive() {
-        function DirectiveController($scope, applicationName, versionNumber, UserService) {
+        function DirectiveController($scope, applicationName, versionNumber, UserService, OrganizationService) {
             function initialize() {
                 $scope.applicationName = applicationName;
                 $scope.versionNumber = versionNumber;
+                $scope.organizationUtil = OrganizationService;
+                $scope.user = UserService.user;
             }
-
-            $scope.user = UserService.user;
             initialize();
         }
         return {
@@ -14,7 +14,7 @@
             scope: {
             },
             templateUrl: 'Navigation.html',
-            controller: ['$scope', 'applicationName', 'versionNumber', 'UserService', DirectiveController]
+            controller: ['$scope', 'applicationName', 'versionNumber', 'UserService', 'OrganizationService', DirectiveController]
         }
     }
     angular

@@ -20,6 +20,12 @@
                         controller: 'TopicSolutionEditController',
                         size: 'lg',
                         resolve: {
+                            isCreating: function() {
+                                return false;
+                            },
+                            topicId: function() {
+                                return null; //[JG] Not needed to edit.
+                            },
                             solution: function() {
                                 return solution;
                             }

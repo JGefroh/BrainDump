@@ -1,11 +1,19 @@
 (function() {
-    function Controller($scope, $state, $modal, UserService, TopicService) {
+    function Controller($scope, $state, $modal, UserService, TopicService, OrganizationService) {
         function initialize() {
+            $scope.organizationId = null;
             $scope.operations = {
                 loadTopics: {}
             };
             UserService.heartbeat().then(function() {
-                $scope.loadTopics($state.params.organizationId);
+                if ($state.params.organizationId) {
+                    $scope.organizationId = $state.params.organizationId;
+                    OrganizationService.setActiveOrganization({id: $scope.organizationId});
+                    $scope.loadTopics($scope.organizationId);
+                }
+                else {
+                    $state.go('organizations.selection');
+                }
             });
         }
 
@@ -21,7 +29,7 @@
                         },
                         model: function() {
                             return {
-                                organizationId: $state.params.organizationId
+                                organizationId: $scope.organizationId
                             };
                         }
                     }
@@ -46,5 +54,6 @@
     }
     angular
         .module('BrainDump.TopicModule')
-        .controller('TopicSelectionController', ['$scope', '$state', '$modal', 'UserService', 'TopicService', Controller]);
+        .controller('TopicSelectionController', ['$scope', '$state', '$modal',
+                                                 'UserService', 'TopicService', 'OrganizationService', Controller]);
 })();

@@ -1,6 +1,8 @@
 (function() {
     function Service($http) {
         var self = this;
+        self.activeOrganization = {};
+
         var endpoints = {
             base: '../rest/organizations',
             getOrganizations: function() {
@@ -56,6 +58,13 @@
                 return response.data;
             });
         };
+
+
+        // Utilities
+
+        self.setActiveOrganization = function(organization) {
+            self.activeOrganization = organization;
+        }
     }
     angular
         .module('BrainDump.OrganizationModule')

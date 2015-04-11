@@ -53,14 +53,27 @@
             });
         };
 
-        $scope.addSolution = function(solutionText) {
-            $scope.operations.addSolution.status = 'LOADING';
-            TopicService.addSolution($state.params.topicId, solutionText).then(function(savedSolution) {
+        $scope.addSolution = function() {
+            var modal = $modal.open(
+                {
+                    templateUrl: 'TopicSolutionEditPopup.html',
+                    controller: 'TopicSolutionEditController',
+                    size: 'lg',
+                    resolve: {
+                        isCreating: function() {
+                            return true;
+                        },
+                        topicId: function() {
+                            return $scope.topic.id;
+                        },
+                        solution: function() {
+                            return {};
+                        }
+                    }
+                }
+            );
+            modal.result.then(function(savedSolution) {
                 $scope.topic.solutions.push(savedSolution);
-                $scope.form.input.solution = null;
-            })
-            .finally(function() {
-                $scope.operations.addSolution.status = null;
             });
         };
 

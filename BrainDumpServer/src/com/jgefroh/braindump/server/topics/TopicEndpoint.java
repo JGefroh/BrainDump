@@ -64,7 +64,7 @@ public class TopicEndpoint extends SecureEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{topicId}/solutions")
-    public SolutionDTO addSolution(@PathParam("topicId") final int topicId, final String solution) {
+    public SolutionDTO addSolution(@PathParam("topicId") final int topicId, final SolutionDTO solution) {
         User currentUser = getCurrentUser();
         return solutionMapper.map(topicManager.addSolution(currentUser, topicId, solution));
     }
@@ -73,7 +73,7 @@ public class TopicEndpoint extends SecureEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/solutions")
-    public SolutionDTO addSolution(final SolutionDTO solution) {
+    public SolutionDTO saveSolution(final SolutionDTO solution) {
         User currentUser = getCurrentUser();
         return solutionMapper.map(topicManager.saveSolution(currentUser, solution));
     }

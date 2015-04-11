@@ -58,42 +58,13 @@
         <div id="topic-solutions">
             <h3 class="page-heading">
                 Solutions
-                <button data-ng-if="!form.addingSolution"
-                        data-ng-click="form.addingSolution = true"
+                <button data-ng-click="addSolution()"
                         class="btn btn-link">
                     <span class="fa fa-plus"></span>
                     Add Solution
                 </button>
             </h3>
 
-            <div id="topic-solution-input"
-                 data-ng-if="form.addingSolution">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <label>Solution</label>
-                        <textarea data-ng-model="form.input.solutionText"
-                                  class="form-control"></textarea>
-                    </div>
-                    <div class="col-xs-12">
-                        <button data-ng-click="form.addingSolution = false"
-                                class="btn btn-link">
-                            Cancel
-                        </button>
-                        <button data-ng-disabled="operations.addSolution.status === 'LOADING'"
-                                data-ng-click="addSolution(form.input.solutionText)"
-                                class="btn btn-success
-                                       pull-right">
-                            <span data-ng-if="operations.addSolution.status !== 'LOADING'"
-                                  class="fa fa-check"></span>
-                            <span data-ng-if="operations.addSolution.status === 'LOADING'"
-                                  class="fa fa-spin fa-spinner"></span>
-                            Submit
-                        </button>
-                    </div>
-
-                    <hr>
-                </div>
-            </div>
 
             <div data-ng-if="topic.solutions.length === 0">
                 <h3>There aren't any solutions yet. Be the first to add one!</h3>
