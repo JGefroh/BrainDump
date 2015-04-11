@@ -56,7 +56,8 @@ public class TopicEndpoint extends SecureEndpoint {
     @DELETE
     @Path("/{topicId}")
     public void deleteTopic(@PathParam("topicId") final Integer id) {
-        topicManager.deleteTopic(id);
+        User currentUser = getCurrentUser();
+        topicManager.deleteTopic(currentUser, id);
     }
     
     @PUT

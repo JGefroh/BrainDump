@@ -5,7 +5,8 @@ public class OrganizationDTO {
 
     private Integer id;
     private String name;
-    
+    private boolean isDeletable;
+    private boolean isEditable;
     
     
     public Integer getId() {
@@ -21,4 +22,18 @@ public class OrganizationDTO {
     public void setName(String name) {
         this.name = name;
     }    
+    
+    public boolean isDeletable() {
+        return isDeletable;
+    }
+    public void setDeletable(boolean isDeletable) {
+        this.isDeletable = isDeletable;
+    }
+    
+    public boolean isEditable() {
+        return isEditable;
+    }
+    public void setEditable(boolean isEditable) {
+        this.isEditable = isEditable;
+    }
 }

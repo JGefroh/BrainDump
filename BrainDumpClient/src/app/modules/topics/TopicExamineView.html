@@ -4,13 +4,15 @@
         <div id="topic-actions">
             <div class="row">
                 <div class="col-xs-12">
-                    <button data-ng-click="editTopic(topic)"
+                    <button data-ng-if="topic.editable"
+                            data-ng-click="editTopic(topic)"
                             class="btn btn-default
                                    pull-right">
                         <span class="fa fa-edit"></span>
                         Edit
                     </button>
-                    <button data-ng-click="deleteTopic(topic)"
+                    <button data-ng-if="topic.editable"
+                            data-ng-click="deleteTopic(topic)"
                             class="btn btn-default
                                    pull-right">
                         <span class="fa fa-remove"></span>

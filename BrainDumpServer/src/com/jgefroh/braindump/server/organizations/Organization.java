@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import com.jgefroh.braindump.server.security.Permission;
 import com.jgefroh.braindump.server.security.Role;
@@ -25,6 +26,10 @@ public class Organization {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Membership> memberships;
+    
+    @Transient
+    private boolean isEditable;
+    
     
     public static Organization create(final String name, final User owner) {
         Organization org = new Organization();
@@ -57,6 +62,8 @@ public class Organization {
         }
     }
     
+    
+    
     public Integer getId() {
         return id;
     }
@@ -74,4 +81,13 @@ public class Organization {
         }
         return memberships;
     }
+    
+    
+    public boolean isEditable() {
+        return isEditable;
+    }
+    public void setEditable(boolean isEditable) {
+        this.isEditable = isEditable;
+    }
+    
 }

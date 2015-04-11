@@ -27,9 +27,9 @@ public class OrganizationEndpoint extends SecureEndpoint {
         
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Organization> getOrganizationsForCurrentUser() {
+    public List<OrganizationDTO> getOrganizationsForCurrentUser() {
         User currentUser = getCurrentUser();
-        return organizationManager.getOrganizationsFor(currentUser);
+        return organizationMapper.mapToDTOs(organizationManager.getOrganizationsFor(currentUser));
     }
     
     @PUT

@@ -6,6 +6,7 @@
                 templateUrl: 'modules/splash/Splash.html',
                 controller: 'SplashController'
             });
+        $urlRouterProvider.otherwise('/splash');
     }
     angular
         .module('BrainDump.RoutesModule', [])

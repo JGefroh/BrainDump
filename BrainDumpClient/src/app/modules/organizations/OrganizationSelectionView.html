@@ -20,7 +20,8 @@
                     <h2 data-ng-bind="organization.name"
                         class="organization-organization-name"></h2>
                 </a>
-                <button data-ng-click="changeMembership(organization)"
+                <button data-ng-if="organization.editable"
+                        data-ng-click="changeMembership(organization)"
                         class="btn btn-success pull-right">
                     <span class="fa fa-gear"></span> Edit Membership
                 </button>

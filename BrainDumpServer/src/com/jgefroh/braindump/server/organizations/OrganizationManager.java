@@ -11,6 +11,8 @@ import com.jgefroh.braindump.server.security.PredefinedRole;
 import com.jgefroh.braindump.server.security.Role;
 import com.jgefroh.braindump.server.security.users.User;
 import com.jgefroh.braindump.server.security.users.UserDAO;
+import com.jgefroh.braindump.server.solutions.Solution;
+import com.jgefroh.braindump.server.topics.Topic;
 
 @Stateless
 public class OrganizationManager {
@@ -37,8 +39,17 @@ public class OrganizationManager {
         return organization;
     }
     
+    private void populateOrganizationMetadata(final User user, final Organization organization) {
+        if (organization.hasUserWithPermission(user.getId(), Permission.ADMINISTRATE_ORGANIZATION)) {
+            organization.setEditable(true);
+        }
+    }
+    
     public List<Organization> getOrganizationsFor(final User user) {
         List<Organization> organizations = organizationDAO.getOrganizationsForUserWithPermission(user.getId(), Permission.VIEW_TOPICS);
+        for (Organization organization : organizations) {
+            populateOrganizationMetadata(user, organization);
+        }
         return organizations;
     }
 
@@ -51,6 +62,7 @@ public class OrganizationManager {
         else {
             Organization organization = authorize(user, dto.getId(), Permission.ADMINISTRATE_ORGANIZATION);            
             organization.updateName(dto.getName());
+            populateOrganizationMetadata(user, organization);
             return organization;
         }
     }

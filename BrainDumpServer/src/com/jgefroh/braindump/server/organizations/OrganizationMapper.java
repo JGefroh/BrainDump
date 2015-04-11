@@ -13,6 +13,7 @@ public class OrganizationMapper {
         OrganizationDTO dto = new OrganizationDTO();
         dto.setName(entity.getName());
         dto.setId(entity.getId());
+        dto.setEditable(entity.isEditable());
         return dto;
     }
     

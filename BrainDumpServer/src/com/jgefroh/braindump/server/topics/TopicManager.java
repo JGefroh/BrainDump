@@ -110,8 +110,9 @@ public class TopicManager {
         }
     }
 
-    public void deleteTopic(final int id) {
-        topicDAO.delete(Topic.class, id);
+    public void deleteTopic(final User user, final int topicId) {
+        Topic topic = authorizeEditTopic(user, topicId);
+        topicDAO.delete(Topic.class, topicId);
     }
     
     
@@ -177,7 +178,15 @@ public class TopicManager {
         return solution;
     }
 
-    public void deleteSolution(int id) {
-        topicDAO.delete(Solution.class, id);
+    public void deleteSolution(final User user, int id) {
+        Solution solution = topicDAO.get(Solution.class, id);
+        Topic parentTopic = topicDAO.get(Topic.class, solution.getTopicId());
+        populateSolutionMetadata(user, parentTopic, solution);
+        if (solution.isEditable()) {
+            topicDAO.delete(Solution.class, id);
+        }
+        else {
+            throw new IllegalArgumentException("Unauthorized");
+        }
     }
 }
